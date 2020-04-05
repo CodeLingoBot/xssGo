@@ -368,6 +368,10 @@ func SendToProxy(u string) {
 				}
 
 				button, err := form.FindElement(selenium.ByXPATH, "//input[@type='submit']")
+				if err != nil {
+					LogError(err)
+					//debug					fmt.Println(Err)
+				}		
 				button.Click()
 
 				err = CD.WebDriver.WaitWithTimeout(conditions.ElementIsLocated(selenium.ByTagName, "html"), 150*time.Millisecond)
